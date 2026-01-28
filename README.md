@@ -12,25 +12,21 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
 > The following images illustrate the system structure, alerts, and testing stages.
 
-### 🔧 Device & Hardware
+### 🔧 Device, Alerts & Testing
 
-![Danger Alert Device](danger%20alert%20device.jpg)
+| Danger Alert Device                                 | Primire Mesaj                         |
+| --------------------------------------------------- | ------------------------------------- |
+| ![Danger Alert Device](danger%20alert%20device.jpg) | ![Primire Mesaj](primire%20mesaj.jpg) |
+
+| Test Margine Piatra Neamt                                         | Prezentare Concurs                              |
+| ----------------------------------------------------------------- | ----------------------------------------------- |
+| ![Test Margine Piatra Neamt](test%20margine%20piatra%20neamt.jpg) | ![Prezentare Concurs](prezentare%20concurs.jpg) |
 
 ### 👥 Team / Assembly
 
-![Colegi](colegi%20mei.jpg)
-
-### 📢 Alert Messages
-
-![Primire Mesaj](primire%20mesaj.jpg)
-
-### 🧪 Field Testing
-
-![Test Margine Piatra Neamt](test%20margine%20piatra%20neamt.jpg)
-
-### 🏆 Project Presentation
-
-![Prezentare Concurs](prezentare%20concurs.jpg)
+| Colegi                      |
+| --------------------------- |
+| ![Colegi](colegi%20mei.jpg) |
 
 ---
 
