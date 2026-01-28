@@ -8,6 +8,16 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
 ---
 
+## 📑 Table of Contents
+
+* [📷 Project Images](#-project-images)
+
+  * [🔧 Device, Alerts & Testing](#-device-alerts--testing)
+  * [👥 Team, Assembly & Presentation](#-team-assembly--presentation)
+* [📂 Repository Structure](#-repository-structure-to-be-expanded)
+
+---
+
 ## 📷 Project Images
 
 > The following images illustrate the system structure, alerts, testing stages, and project presentation.
@@ -40,4 +50,4 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 │── README.md
 ```
 
-> Additional folders with source code and `.txt` files will be added progress
+> Additional folders with source code and `.txt` files will be added progressively.
