@@ -34,13 +34,13 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
 ### 🔧 Device, Alerts & Testing
 
-| Danger Alert Device                                 | Test Margine Piatra Neamt                                                                    | Primire Mesaj                         |
+| Danger Alert Device                                 | Testing                                                                    | Phone interface                         |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------- |
 | ![Danger Alert Device](danger%20alert%20device.jpg) | <img src="test%20margine%20piatra%20neamt.jpg" alt="Test Margine Piatra Neamt" width="450"/> | ![Primire Mesaj](primire%20mesaj.jpg) |
 
 ### 👥 Team, Assembly & Presentation
 
-| Colegi                      | Prezentare Concurs                              |
+| My team                      | Contest Presentation                              |
 | --------------------------- | ----------------------------------------------- |
 | ![Colegi](colegi%20mei.jpg) | ![Prezentare Concurs](prezentare%20concurs.jpg) |
 
