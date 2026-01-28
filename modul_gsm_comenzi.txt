@@ -1,0 +1,17 @@
+* pentru a apela un numar de telefon: - ATD07xxxxxxxx; and to end the call ATH
+
+* pentru a trimite un sms : AT+CMGF=1 --- Set SMS Mode to Text:
+                           AT+CMGS="07xxxxxxxx" 
+                           scrie mesaj si apasa ctrl+z
+* pentru a citi mesaje sms: AT+CMGL="ALL"
+
+* pentru a vedea puterea semnalului : AT+CSQ
+
+* to check the available network cells: AT+CNETSCAN
+* To list available cellular networks (cells) :  AT+COPS=?
+* The command “AT+CENG” is designed to put the unit into “Engineering Mode”. AT+CENG=2,1
++CENG: <index>, <Cell ID>, <Signal Strength>, <LAC>, <MCC>, <MNC>, <ARFCN>
+
+
+
+

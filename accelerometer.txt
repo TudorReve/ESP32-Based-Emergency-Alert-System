@@ -1,0 +1,76 @@
+from machine import UART
+import time
+import urequests
+
+# SIM800C UART setup
+uart2 = UART(2, baudrate=9600, tx=17, rx=16, timeout=3000)
+
+def send_command(cmd, delay=1):
+    uart2.write(cmd + "\r\n")
+    time.sleep(delay)
+    if uart2.any():
+        response = uart2.read().decode('utf-8', errors='ignore')
+        return response
+    return ""
+
+def get_cell_data():
+    """Extract MCC, MNC, LAC, and Cell ID from SIM800C"""
+    response = send_command("AT+CENG=2,1", 3)
+    cells = []
+    
+    for line in response.split("\n"):
+        if "+CENG:" in line:
+            parts = line.split(",")
+            if len(parts) >= 5:
+                cell_info = {
+                    "mcc": parts[1].strip(),
+                    "mnc": parts[2].strip(),
+                    "lac": parts[3].strip(),
+                    "cellid": parts[4].strip()
+                }
+                cells.append(cell_info)
+    
+    return cells
+
+def get_location(mcc, mnc, lac, cellid):
+    """Query OpenCellID API for cell tower coordinates"""
+    api_key = "pk.75d863227eb8b117ce78c52e8b6233d0"  # Replace with your OpenCellID API key
+    url = f"https://opencellid.org/api/get?key={api_key}&mcc={mcc}&mnc={mnc}&lac={lac}&cellid={cellid}"
+    
+    try:
+        response = urequests.get(url)
+        data = response.json()
+        response.close()
+        
+        if "lat" in data and "lon" in data:
+            return data["lat"], data["lon"]
+        else:
+            return None, None
+    except Exception as e:
+        print("Error:", e)
+        return None, None
+
+def save_to_file(data):
+    """Save the coordinates to a file on the ESP32"""
+    with open("coordinates.txt", "w") as file:
+        for entry in data:
+            file.write(f"CellID: {entry['cellid']}, Lat: {entry['lat']}, Lon: {entry['lon']}\n")
+    print("Data saved to coordinates.txt")
+
+# Main Process
+cells = get_cell_data()
+print("Cell Towers Found:", cells)
+
+cell_locations = []
+
+for cell in cells:
+    lat, lon = get_location(cell["mcc"], cell["mnc"], cell["lac"], cell["cellid"])
+    if lat and lon:
+        print(f"Cell {cell['cellid']} -> Coordinates: {lat}, {lon}")
+        cell_locations.append({"cellid": cell["cellid"], "lat": lat, "lon": lon})
+    else:
+        print(f"Cell {cell['cellid']} -> Location not found")
+
+# Save results to file
+if cell_locations:
+    save_to_file(cell_locations)

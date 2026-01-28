@@ -1,0 +1,123 @@
+from machine import UART, Pin
+import time
+import json
+
+# Setup UART for ESP32 (use appropriate pins)
+uart = UART(2, baudrate=9600, tx=17, rx=16, timeout=1000)
+
+def wait_for_response(timeout=5):
+    """Wait and read the response from SIM800C"""
+    start_time = time.time()
+    response = b""
+    while time.time() - start_time < timeout:
+        if uart.any():
+            response += uart.read()
+    return response.decode(errors="ignore")
+
+def setup_internet_connection():
+    """Setup SIM800C to connect to the internet"""
+    print("Initializing SIM800C...\n")
+    
+    uart.write("AT\r\n")  # Test module
+    time.sleep(2)
+    print(wait_for_response())
+    
+    uart.write("ATE0\r\n")  # Disable echo
+    time.sleep(2)
+    print(wait_for_response())
+    
+    uart.write("AT+CPIN?\r\n")  # Check SIM status
+    time.sleep(2)
+    print(wait_for_response())
+    
+    uart.write("AT+CSQ\r\n")  # Check signal quality
+    time.sleep(2)
+    print(wait_for_response())
+    
+    uart.write("AT+CREG?\r\n")  # Check network registration
+    time.sleep(2)
+    print(wait_for_response())
+    
+    uart.write("AT+CGATT=1\r\n")  # Attach to GPRS
+    time.sleep(2)
+    print(wait_for_response())
+    
+    # Set the correct APN
+    uart.write("AT+CSTT=\"internet\",\"\",\"\"\r\n")  # Use the correct APN for your network
+    time.sleep(2)
+    print(wait_for_response())
+    
+    uart.write("AT+CIICR\r\n")  # Start wireless connection
+    time.sleep(5)
+    print(wait_for_response())
+    
+    uart.write("AT+CGACT=1,1\r\n")  # Activate PDP context (GPRS data)
+    time.sleep(2)
+    print(wait_for_response())
+    
+    uart.write("AT+CIFSR\r\n")  # Get local IP address
+    time.sleep(2)
+    ip_address = wait_for_response()
+    print(f"Local IP Address: {ip_address}")
+    
+def make_http_get_request(mcc, mnc, lac, cell_id, api_key):
+    """Make an HTTP GET request to OpenCellID API with the given parameters"""
+    url = f"https://opencellid.org/cell/get?key={api_key}&mcc={mcc}&mnc={mnc}&lac={lac}&cellid={cell_id}&format=json"
+    
+    # Initialize HTTP
+    uart.write("AT+HTTPINIT\r\n")
+    time.sleep(2)
+    print(wait_for_response())
+    
+    # Set HTTP parameters (URL for GET request)
+    uart.write(f"AT+HTTPPARA=\"URL\",\"{url}\"\r\n")
+    time.sleep(2)
+    print(wait_for_response())
+    
+    # Send HTTP GET request
+    uart.write("AT+HTTPACTION=0\r\n")  # 0 for GET
+    time.sleep(5)  # Wait for response
+    print(wait_for_response())
+    
+    # Read the HTTP response content
+    uart.write("AT+HTTPREAD\r\n")
+    time.sleep(2)
+    response = wait_for_response()
+    print(f"HTTP Response: {response}")
+    
+    # Parse JSON response (example: OpenCellID returns latitude and longitude)
+    try:
+        response_data = json.loads(response)
+        
+        # Check if the response contains cell data
+        if 'lat' in response_data and 'lon' in response_data:
+            lat = response_data['lat']
+            lon = response_data['lon']
+            print(f"Latitude: {lat}, Longitude: {lon}")
+        else:
+            print("Error: Response does not contain lat/lon data.")
+        
+    except json.JSONDecodeError:
+        print("Failed to decode JSON response.")
+    
+    # Close HTTP session
+    uart.write("AT+HTTPTERM\r\n")
+    time.sleep(2)
+    print(wait_for_response())
+
+def main():
+    """Main function to set up internet connection and make an HTTP GET request"""
+    setup_internet_connection()  # Set up GPRS and fetch IP address
+    
+    # Define the parameters (replace these with actual values)
+    mcc = "123"  # Mobile Country Code
+    mnc = "45"   # Mobile Network Code
+    lac = "6789"  # Location Area Code
+    cell_id = "123456"  # Cell ID
+    api_key = "your_api_key_here"  # Replace with your actual API key
+    
+    # Make the HTTP GET request with the given parameters
+    make_http_get_request(mcc, mnc, lac, cell_id, api_key)
+
+# Run the script
+main()
