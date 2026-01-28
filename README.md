@@ -14,6 +14,16 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
   * [🔧 Device, Alerts & Testing](#-device-alerts--testing)
   * [👥 Team, Assembly & Presentation](#-team-assembly--presentation)
+
+* [📄 TXT Documentation & Logs](#-txt-documentation--logs)
+
+* [🐍 Python Scripts](#-python-scripts)
+
+* [📷 Project Images](#-project-images)
+
+  * [🔧 Device, Alerts & Testing](#-device-alerts--testing)
+  * [👥 Team, Assembly & Presentation](#-team-assembly--presentation)
+
 * [📂 Repository Structure](#-repository-structure-to-be-expanded)
 
 ---
@@ -36,14 +46,23 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
 ---
 
-## 📂 Repository Structure (to be expanded)
+## 📄 TXT Documentation & Logs
 
-```
-/ESP32-Based-Emergency-Alert-System
-│── images/
-│── src/
-│── docs/
-│── README.md
-```
+The following `.txt` files contain documentation, tests, and raw data related to GSM communication, sensors, and messaging:
 
-> Additional folders with source code and `.txt` files will be added progressively.
+* `accelerometer.txt`
+* `message (3).txt`
+* `modul_gsm_comenzi.txt`
+* `coordonate_turnuri_pe_rand_+_triunghiularizare.txt`
+* `SIM800_Series_GSM_Location_Application_Note.txt`
+
+---
+
+## 🐍 Python Scripts
+
+Python scripts used for testing GSM connectivity, internet access, and data processing:
+
+* `ModulGsm.py`
+* `test_internet.py`
+
+> These scripts are used for GSM communication testing, data extraction, and validation before ESP32 integration.
