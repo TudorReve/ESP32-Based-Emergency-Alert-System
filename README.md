@@ -50,11 +50,11 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
 The following `.txt` files contain documentation, tests, and raw data related to GSM communication, sensors, and messaging:
 
-* `accelerometer.txt`
-* `message (3).txt`
-* `modul_gsm_comenzi.txt`
-* `coordonate_turnuri_pe_rand_+_triunghiularizare.txt`
-* `SIM800_Series_GSM_Location_Application_Note.txt`
+* `accelerometer.txt` – Code used to calibrate and configure the accelerometer, preparing it for impact detection and motion monitoring.
+* `message (3).txt` – Code responsible for configuring the GSM module to send messages and communicate with the external location API.
+* `modul_gsm_comenzi.txt` – A collection of basic AT commands used for controlling and communicating with the SIM800 GSM module.
+* `coordonate_turnuri_pe_rand_+_triunghiularizare.txt` – Logic for extracting coordinates from each detected cell tower and applying signal triangulation to estimate the device location.
+* `SIM800_Series_GSM_Location_Application_Note.txt` – Official manufacturer documentation for the SIM800C module, describing GSM location features and usage guidelines.
 
 ---
 
@@ -62,7 +62,7 @@ The following `.txt` files contain documentation, tests, and raw data related to
 
 Python scripts used for testing GSM connectivity, internet access, and data processing:
 
-* `ModulGsm.py`
-* `test_internet.py`
+* `ModulGsm.py` – Python implementation of GSM communication logic, used to test message handling and interaction with GSM services.
+* `test_internet.py` – Script used to verify internet connectivity and data transmission before integrating the logic on the ESP32.
 
 > These scripts are used for GSM communication testing, data extraction, and validation before ESP32 integration.
