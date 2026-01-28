@@ -10,7 +10,7 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
 ## 📷 Project Images
 
-> The following images illustrate the system structure, alerts, and testing stages.
+> The following images illustrate the system structure, alerts, testing stages, and project presentation.
 
 ### 🔧 Device, Alerts & Testing
 
@@ -18,15 +18,15 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 | --------------------------------------------------- | ------------------------------------- |
 | ![Danger Alert Device](danger%20alert%20device.jpg) | ![Primire Mesaj](primire%20mesaj.jpg) |
 
-| Test Margine Piatra Neamt                                         | Prezentare Concurs                              |
-| ----------------------------------------------------------------- | ----------------------------------------------- |
-| ![Test Margine Piatra Neamt](test%20margine%20piatra%20neamt.jpg) | ![Prezentare Concurs](prezentare%20concurs.jpg) |
+| Test Margine Piatra Neamt                                         |
+| ----------------------------------------------------------------- |
+| ![Test Margine Piatra Neamt](test%20margine%20piatra%20neamt.jpg) |
 
-### 👥 Team / Assembly
+### 👥 Team, Assembly & Presentation
 
-| Colegi                      |
-| --------------------------- |
-| ![Colegi](colegi%20mei.jpg) |
+| Colegi                      | Prezentare Concurs                              |
+| --------------------------- | ----------------------------------------------- |
+| ![Colegi](colegi%20mei.jpg) | ![Prezentare Concurs](prezentare%20concurs.jpg) |
 
 ---
 
@@ -40,4 +40,4 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 │── README.md
 ```
 
-> Additional folders with source code and `.txt` files will be added progressively.
+> Additional folders with source code and `.txt` files will be added progress
