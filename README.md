@@ -24,13 +24,9 @@ Upon detecting an emergency—through voice, crash, or button press—it activat
 
 ### 🔧 Device, Alerts & Testing
 
-| Danger Alert Device                                 | Primire Mesaj                         |
-| --------------------------------------------------- | ------------------------------------- |
-| ![Danger Alert Device](danger%20alert%20device.jpg) | ![Primire Mesaj](primire%20mesaj.jpg) |
-
-| Test Margine Piatra Neamt                                         |
-| ----------------------------------------------------------------- |
-| ![Test Margine Piatra Neamt](test%20margine%20piatra%20neamt.jpg) |
+| Danger Alert Device                                 | Test Margine Piatra Neamt                                         | Primire Mesaj                         |
+| --------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------- |
+| ![Danger Alert Device](danger%20alert%20device.jpg) | ![Test Margine Piatra Neamt](test%20margine%20piatra%20neamt.jpg) | ![Primire Mesaj](primire%20mesaj.jpg) |
 
 ### 👥 Team, Assembly & Presentation
 
